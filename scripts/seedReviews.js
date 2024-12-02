@@ -31,6 +31,14 @@ const reviews = [
     date: new Date('2023-09-24'),
     review: 'The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald\'s standard - hot and satisfying.',
     rating: 5
+  },
+  {
+    userImage: 'https://res.cloudinary.com/drfwyf8av/image/upload/v1732847284/assets/sarf6ktfzofhqokqbwfe.png',
+    userName: 'St Gix',
+    userLocation: 'South London',
+    date: new Date('2023-09-24'),
+    review: 'The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald\'s standard - hot and satisfying.',
+    rating: 5
   }
 ];
 

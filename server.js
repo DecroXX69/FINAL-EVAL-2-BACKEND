@@ -8,7 +8,7 @@ const foodItemRoutes = require('./Routes/foodItemRoutes');
 const authRoutes = require('./Routes/authRoutes');
 const seedFoodItems = require('./scripts/seedFoodItems');
 const seedReviews = require('./scripts/seedReviews'); // Add this line
-
+const sharedCartRoutes = require('./Routes/sharedCartRoutes');
 const app = express();
 
 // Middleware
@@ -39,6 +39,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.use('/api/users', authRoutes);
 app.use('/api', foodItemRoutes);
 app.use('/api', reviewRoutes); 
+app.use('/api', sharedCartRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
