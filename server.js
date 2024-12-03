@@ -14,7 +14,10 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
 // Database Connection
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
@@ -35,7 +38,18 @@ mongoose.connect(process.env.MONGODB_URI, {
 })
 .catch((err) => console.error('MongoDB Connection Error:', err));
 
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
 // Routes
+
 app.use('/api/users', authRoutes);
 app.use('/api', foodItemRoutes);
 app.use('/api', reviewRoutes); 

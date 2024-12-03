@@ -13,12 +13,12 @@ const reviews = [
     userName: 'St Gix',
     userLocation: 'South London',
     date: new Date('2023-09-24'),
-    review: 'The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald\'s standard - hot and satisfying.',
+    review: 'The neutral aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald\'s standard - hot and satisfying.',
     rating: 5
   },
   {
     userImage: 'https://res.cloudinary.com/drfwyf8av/image/upload/v1732847284/assets/sarf6ktfzofhqokqbwfe.png',
-    userName: 'St Gix',
+    userName: 'St Tix',
     userLocation: 'South London',
     date: new Date('2023-09-24'),
     review: 'The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald\'s standard - hot and satisfying.',
@@ -26,18 +26,26 @@ const reviews = [
   },
   {
     userImage: 'https://res.cloudinary.com/drfwyf8av/image/upload/v1732847284/assets/sarf6ktfzofhqokqbwfe.png',
+    userName: 'St Wix',
+    userLocation: 'West London',
+    date: new Date('2023-09-24'),
+    review: 'The negative aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald\'s standard - hot and satisfying.',
+    rating: 5
+  },
+  {
+    userImage: 'https://res.cloudinary.com/drfwyf8av/image/upload/v1732847284/assets/sarf6ktfzofhqokqbwfe.png',
     userName: 'St Gix',
-    userLocation: 'South London',
+    userLocation: 'East London',
     date: new Date('2023-09-24'),
     review: 'The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald\'s standard - hot and satisfying.',
     rating: 5
   },
   {
     userImage: 'https://res.cloudinary.com/drfwyf8av/image/upload/v1732847284/assets/sarf6ktfzofhqokqbwfe.png',
-    userName: 'St Gix',
-    userLocation: 'South London',
+    userName: 'St Fix',
+    userLocation: 'North London',
     date: new Date('2023-09-24'),
-    review: 'The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald\'s standard - hot and satisfying.',
+    review: 'The negative aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald\'s standard - hot and satisfying.',
     rating: 5
   }
 ];
