@@ -1,4 +1,4 @@
-// scripts/seedReviews.js
+
 const mongoose = require('mongoose');
 const Review = require('../Models/Review');
 
@@ -49,7 +49,7 @@ const reviews = [
 
 const seedReviews = async () => {
     try {
-      // Check if reviews already exist to prevent duplicate seeding
+      
       const existingReviews = await Review.countDocuments();
       if (existingReviews > 0) {
         console.log('Reviews already seeded. Skipping...');
@@ -61,7 +61,7 @@ const seedReviews = async () => {
       console.log('Reviews seeded successfully!');
     } catch (error) {
       console.error('Error seeding reviews:', error);
-      throw error; // Re-throw to be caught in server.js
+      throw error; 
     }
   };
 

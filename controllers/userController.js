@@ -1,6 +1,6 @@
 const User = require('../Models/User');
 
-// Fetch all addresses
+
 const getUserAddresses = async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
@@ -13,7 +13,7 @@ const getUserAddresses = async (req, res) => {
   }
 };
 
-// Add a new address
+
 const addUserAddress = async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
@@ -29,7 +29,7 @@ const addUserAddress = async (req, res) => {
   }
 };
 
-// Update an address
+
 const updateUserAddress = async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
@@ -50,24 +50,24 @@ const updateUserAddress = async (req, res) => {
   }
 };
 
-// Delete an address
+
 const deleteUserAddress = async (req, res) => {
     try {
         const { userId, addressId } = req.params;
         
-        // Find the user by ID
+       
         const user = await User.findById(userId);
         if (!user) {
           return res.status(404).json({ success: false, message: 'User not found' });
         }
     
-        // Find and remove the address by addressId
+       
         const addressIndex = user.addresses.findIndex(address => address._id.toString() === addressId);
         if (addressIndex === -1) {
           return res.status(404).json({ success: false, message: 'Address not found' });
         }
     
-        // Remove the address from the user's addresses array
+       
         user.addresses.splice(addressIndex, 1);
         await user.save();
     

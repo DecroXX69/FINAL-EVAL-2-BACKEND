@@ -7,25 +7,25 @@ const reviewRoutes = require('./Routes/reviewRoutes');
 const foodItemRoutes = require('./Routes/foodItemRoutes');
 const authRoutes = require('./Routes/authRoutes');
 const seedFoodItems = require('./scripts/seedFoodItems');
-const seedReviews = require('./scripts/seedReviews'); // Add this line
+const seedReviews = require('./scripts/seedReviews'); 
 const sharedCartRoutes = require('./Routes/sharedCartRoutes');
 const app = express();
 
-// Middleware
+
 app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
 });
-// Database Connection
+
 mongoose.connect(process.env.MONGODB_URI)
   .then(async () => {
     console.log('MongoDB Connected Successfully');
     try {
-      await seedFoodItems(); // Seeding food items
+      await seedFoodItems(); 
       console.log('Food items seeding completed');
-      await seedReviews(); // Seeding reviews
+      await seedReviews(); 
       console.log('Reviews seeding completed');
     } catch (seedError) {
       console.error('Error during seeding:', seedError);

@@ -4,19 +4,19 @@ const User = require('../Models/User');
 const protect = async (req, res, next) => {
   let token;
 
-  // Check for token in Authorization header
+  
   if (
     req.headers.authorization && 
     req.headers.authorization.startsWith('Bearer')
   ) {
     try {
-      // Extract token from header
+      
       token = req.headers.authorization.split(' ')[1];
 
-      // Verify token
+      
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-      // Find user and attach to request, exclude password
+      
       req.user = await User.findById(decoded.id).select('-password');
 
       if (!req.user) {
@@ -38,7 +38,6 @@ const protect = async (req, res, next) => {
   }
 };
 
-// Optional: Role-based authorization middleware
 
 
 module.exports = { protect };

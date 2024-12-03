@@ -2,7 +2,7 @@ const User = require('../Models/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-// Generate JWT Token
+
 const generateToken = (user) => {
   return jwt.sign(
     { 
@@ -14,12 +14,12 @@ const generateToken = (user) => {
   );
 };
 
-// User Registration
+
 exports.registerUser = async (req, res) => {
   try {
     const { name, email, password, phoneNumber } = req.body;
 
-    // Validate input fields
+    
     if (!name || name.trim().length < 2) {
       return res.status(400).json({ 
         success: false,
@@ -48,7 +48,7 @@ exports.registerUser = async (req, res) => {
       });
     }
 
-    // Check if user already exists
+  
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ 
@@ -57,7 +57,7 @@ exports.registerUser = async (req, res) => {
       });
     }
 
-    // Create new user
+   
     const user = new User({
       name,
       email,
@@ -67,7 +67,7 @@ exports.registerUser = async (req, res) => {
 
     await user.save();
 
-    // Send success response without token (as per your frontend expectations)
+   
     res.status(201).json({
       success: true,
       message: 'User registered successfully',
@@ -89,12 +89,12 @@ exports.registerUser = async (req, res) => {
   }
 };
 
-// User Login
+
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Validate input fields
+   
     if (!email || !password) {
       return res.status(400).json({ 
         success: false,
@@ -102,7 +102,7 @@ exports.loginUser = async (req, res) => {
       });
     }
 
-    // Check if user exists
+    
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({ 
@@ -111,7 +111,7 @@ exports.loginUser = async (req, res) => {
       });
     }
 
-    // Check if password matches
+    
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
       return res.status(401).json({ 
@@ -120,10 +120,10 @@ exports.loginUser = async (req, res) => {
       });
     }
 
-    // Generate JWT Token
+   
     const token = generateToken(user);
 
-    // Send response matching frontend expectations
+   
     res.status(200).json({
       success: true,
       token,
@@ -144,10 +144,10 @@ exports.loginUser = async (req, res) => {
   }
 };
 
-// Get User Profile
+
 exports.getUserProfile = async (req, res) => {
   try {
-    // req.user is set by the protect middleware
+    
     const user = await User.findById(req.user.id).select('-password');
     
     if (!user) {
@@ -177,7 +177,7 @@ exports.getUserProfile = async (req, res) => {
   }
 };
 
-// Update User Profile
+
 exports.updateUserProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -189,7 +189,7 @@ exports.updateUserProfile = async (req, res) => {
       });
     }
 
-    // Update allowed fields
+   
     if (req.body.name) user.name = req.body.name;
     if (req.body.email) user.email = req.body.email;
     if (req.body.phoneNumber) user.phoneNumber = req.body.phoneNumber;

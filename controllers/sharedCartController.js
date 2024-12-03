@@ -6,7 +6,7 @@ const sharedCartController = {
       const cartData = {
         items: req.body.items,
         createdAt: new Date(),
-        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hour expiry
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), 
         total: req.body.total,
         subTotal: req.body.subTotal,
         discount: req.body.discount,
@@ -32,7 +32,7 @@ const sharedCartController = {
   },
 
   getSharedCart: async (req, res) => {
-    // Set headers first
+    
     res.set({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
@@ -41,21 +41,21 @@ const sharedCartController = {
     });
   
     try {
-      console.log('Fetching cart with ID:', req.params.cartId); // Debug log
+      console.log('Fetching cart with ID:', req.params.cartId); 
   
       const cart = await SharedCart.findById(req.params.cartId);
       
       if (!cart) {
-        console.log('Cart not found'); // Debug log
+        console.log('Cart not found'); 
         return res.status(404).json({
           success: false,
           message: 'Shared cart not found'
         });
       }
   
-      // Check if cart has expired
+      
       if (new Date(cart.expiresAt) < new Date()) {
-        console.log('Cart expired'); // Debug log
+        console.log('Cart expired'); 
         await SharedCart.findByIdAndDelete(cart._id);
         return res.status(404).json({
           success: false,
@@ -63,14 +63,14 @@ const sharedCartController = {
         });
       }
   
-      console.log('Sending cart data:', cart); // Debug log
+      console.log('Sending cart data:', cart); 
   
       return res.status(200).json({
         success: true,
         cart
       });
     } catch (error) {
-      console.error('Server error:', error); // Debug log
+      console.error('Server error:', error); 
       
       if (error.name === 'CastError') {
         return res.status(400).json({

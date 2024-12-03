@@ -1,4 +1,4 @@
-// foodItemController.js
+
 const cloudinary = require('cloudinary').v2;
 const FoodItem = require('../Models/FoodItem');
 

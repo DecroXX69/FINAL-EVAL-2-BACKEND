@@ -1,4 +1,4 @@
-// seedFoodItems.js
+
 const mongoose = require('mongoose');
 const FoodItem = require('../Models/FoodItem');
 
@@ -6,7 +6,7 @@ const FoodItem = require('../Models/FoodItem');
 
 
 const foodItems = [
-  // Burgers
+ 
   {
     name: 'Royal Cheese Burger with extra fries',
     description: 'Big Mac™, 2 beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun',
@@ -100,7 +100,7 @@ const foodItems = [
 
 const seedFoodItems = async () => {
   try {
-    // Check if items already exist to prevent duplicate seeding
+    
     const existingItems = await FoodItem.countDocuments();
     if (existingItems > 0) {
       console.log('Food items already seeded. Skipping...');
@@ -112,7 +112,7 @@ const seedFoodItems = async () => {
     console.log('Food items seeded successfully!');
   } catch (error) {
     console.error('Error seeding food items:', error);
-    throw error; // Re-throw to be caught in server.js
+    throw error; 
   }
 };
 
