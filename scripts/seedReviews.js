@@ -2,10 +2,7 @@
 const mongoose = require('mongoose');
 const Review = require('../Models/Review');
 
-mongoose.connect('mongodb://localhost:27017/user_database', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
+
 
 const reviews = [
   {

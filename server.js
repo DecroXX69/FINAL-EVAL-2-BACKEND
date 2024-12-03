@@ -19,24 +19,19 @@ app.use((req, res, next) => {
   next();
 });
 // Database Connection
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(async () => {
-  console.log('MongoDB Connected Successfully');
-  // Seed both food items and reviews after successful connection
-  try {
-    await seedFoodItems();
-    console.log('Food items seeding completed');
-    
-    await seedReviews(); // Add this line
-    console.log('Reviews seeding completed');
-  } catch (seedError) {
-    console.error('Error during seeding:', seedError);
-  }
-})
-.catch((err) => console.error('MongoDB Connection Error:', err));
+mongoose.connect(process.env.MONGODB_URI)
+  .then(async () => {
+    console.log('MongoDB Connected Successfully');
+    try {
+      await seedFoodItems(); // Seeding food items
+      console.log('Food items seeding completed');
+      await seedReviews(); // Seeding reviews
+      console.log('Reviews seeding completed');
+    } catch (seedError) {
+      console.error('Error during seeding:', seedError);
+    }
+  })
+  .catch((err) => console.error('MongoDB Connection Error:', err));
 
 
 app.use((req, res, next) => {
