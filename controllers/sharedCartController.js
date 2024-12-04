@@ -1,4 +1,4 @@
-const SharedCart = require('../models/SharedCart');
+const SharedCart = require('../Models/SharedCart');
 
 const sharedCartController = {
   createSharedCart: async (req, res) => {
