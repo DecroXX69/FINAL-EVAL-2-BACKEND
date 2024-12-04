@@ -10,16 +10,10 @@ const seedReviews = require('./scripts/seedReviews');
 const sharedCartRoutes = require('./Routes/sharedCartRoutes');
 const app = express();
 
-// CORS configuration
-const corsOptions = {
-  origin: 'https://final-eval-2-frontend.vercel.app', // Replace with your frontend's URL
-  methods: 'GET,POST,PUT,DELETE,OPTIONS',
-  allowedHeaders: 'Content-Type,Authorization',
-  credentials: true, // If your frontend sends cookies or authentication headers
-};
+
 
 // Apply CORS middleware
-app.use(cors(corsOptions));
+app.use(cors);
 
 app.use(express.json());
 app.use((req, res, next) => {
